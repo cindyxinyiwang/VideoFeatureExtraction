@@ -24,17 +24,21 @@ if __name__ == '__main__':
 	kernel = np.ones((5, 5), np.uint8)
 	#preprocess = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
 	preprocess= cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-	cv2.imshow('video', image)
-	cv2.imshow('mask', mask)
-	cv2.imshow('res', res)
 
 	contours, hier = cv2.findContours(preprocess.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 	for cnt in contours:
-		if 30 < cv2.contourArea(cnt) < 5000:
+		#cv2.drawContours(image,[cnt], 0, (0, 255, 0), 5)
+		if 2000 < cv2.contourArea(cnt):
 			cv2.drawContours(image,[cnt], 0, (0, 255, 0), 5)
 			M = cv2.moments(cnt)
-			print M
+			#print M
+			cx = int(M['m10']/M['m00'])
+			cy = int(M['m01']/M['m00'])
+			print cx, " " ,cy
 
 
 	cv2.imshow('preprocess', preprocess)
+	cv2.imshow('video', image)
+	cv2.imshow('mask', mask)
+	cv2.imshow('res', res)
 	cv2.waitKey(0)
