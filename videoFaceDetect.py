@@ -2,8 +2,8 @@ import cv2
 
 if __name__ == '__main__':
 	import sys
-	videoPath = 'TheRedBalloon.mp4'
-	cascPath = 'haarcascade_frontalface_default.xml'
+	videoPath = '../TheRedBalloon.mp4'
+	cascPath = 'haarcascade_fullbody.xml'
 
 	faceCascade = cv2.CascadeClassifier(cascPath)
 	cap = cv2.VideoCapture(videoPath)

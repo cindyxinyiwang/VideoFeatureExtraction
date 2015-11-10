@@ -1,0 +1,1 @@
+/Users/cindywang/Documents/opencv/saliency/CMakeFiles/saliency.dir
